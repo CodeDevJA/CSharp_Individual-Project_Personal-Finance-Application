@@ -21,6 +21,7 @@ public abstract class TransactionBase
   } 
 
   //abstract Metod som ska ärvas och implementeras av Sub-Classer, för att specificera transaktionstypen, (tex "inkomst" eller "kostnad")
+  //obs! denna metod måste implementeras av alla Classer som ärver från Classen TransactionBase 
   public abstract string GetTransactionTypeStr(); 
 
 }
