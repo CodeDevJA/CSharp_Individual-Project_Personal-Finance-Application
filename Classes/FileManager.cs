@@ -56,7 +56,7 @@ public class FileManager
 
         //villkorsats som avgör om typen är en inkomst eller en kostnad och utför respektive kod-block (skapar rätt typ av transaktion) för respektive villkors resultat. 
           //kontrollerar om första elementet i strArrayen är "Income"-värde.
-          if (partsStrArr[0] == "Income") 
+          if (partsStrArr[0] == TransactionType.INCOME.ToString()) 
           {
             //lägger till en ny transaktion (nytt object från FinanceManager) till Listan, med data som var sparat i filen, en rad i taget. 
             //tar en strArr itaget, delar upp de olika elementen, till respektive del av argumenten som skickas in till FinanceManagerConstructorn, som tas emot som parametrar, för att skapa ett nytt object med dessa värden och lägger sedan till detta object som en transaktion i Listan igen, för inkomster. 
@@ -64,7 +64,7 @@ public class FileManager
           }
           
           //kontrollerar om första elementet i strArrayen är "Expense"-värde. 
-          else if (partsStrArr[0] == "Expense") 
+          else if (partsStrArr[0] == TransactionType.EXPENSE.ToString()) 
           {
             //lägger till en ny transaktion (nytt object från FinanceManager) till Listan, med data som var sparat i filen, en rad i taget. 
             //tar en strArr itaget, delar upp de olika elementen, till respektive del av argumenten som skickas in till FinanceManagerConstructorn, som tas emot som parametrar, för att skapa ett nytt object med dessa värden och lägger sedan till detta object som en transaktion i Listan igen, för kostnader. 

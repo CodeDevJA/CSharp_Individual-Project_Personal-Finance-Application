@@ -15,6 +15,6 @@ public class IncomeTransaction : TransactionBase
     //obs! Metod-namnet är samma i alla Class-nivåer, med skillnaden att "abstract"-delen blir istället "override" (som betyder skriver över/omdefinerar). 
     public override string GetTransactionTypeStr()
     {
-      return "Income";  //Returnerar "Income" (Inkomst i text-form, string) som typ av transaktion
+      return TransactionType.INCOME.ToString();  //Returnerar "Income" (Inkomst i text-form, string) som typ av transaktion
     }
 }

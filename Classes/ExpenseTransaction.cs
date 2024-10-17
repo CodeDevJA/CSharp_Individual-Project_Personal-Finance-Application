@@ -15,7 +15,7 @@ public class ExpenseTransaction : TransactionBase
     //obs! Metod-namnet är samma i alla Class-nivåer, med skillnaden att "abstract"-delen blir istället "override" (som betyder skriver över/omdefinerar). 
     public override string GetTransactionTypeStr()
     {
-      return "Expense";  //Returnerar "Expense" (Kostnad i text-form, string) som typ av transaktion
+      return TransactionType.EXPENSE.ToString();  //Returnerar "Expense" (Kostnad i text-form, string) som typ av transaktion
     }
 }
 

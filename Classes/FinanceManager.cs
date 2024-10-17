@@ -39,7 +39,7 @@ public class FinanceManager
       foreach (TransactionBase transaction in transactionList) //(classNamn elementNamn in ListaNamn)
       {
         //kontrollerar att den aktuella iterationen i foreach-loopen (elementet i listan) är av inkomst-typ (dvs true), om den inte är det, så är det av kostnad-typ (dvs false)
-        if (transaction.GetTransactionTypeStr() == "Income") 
+        if (transaction.GetTransactionTypeStr() == TransactionType.INCOME.ToString()) 
         {
           //denna kod utförs om villkoret är sant
           //ökar det totala saldot (inkomst) med belopp-värdet för denna transaktion
