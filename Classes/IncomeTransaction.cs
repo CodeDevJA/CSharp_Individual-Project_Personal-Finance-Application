@@ -18,4 +18,3 @@ public class IncomeTransaction : TransactionBase
       return "Income";  //Returnerar "Income" (Inkomst i text-form, string) som typ av transaktion
     }
 }
-
