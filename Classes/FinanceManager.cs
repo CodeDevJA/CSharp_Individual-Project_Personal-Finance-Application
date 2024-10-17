@@ -51,11 +51,11 @@ public class FinanceManager
           //denna kod utförs om villkoret är falskt
           //förminskar det totala saldot (kostnad) med belopp-värdet för denna transaktion
           balanceDecimal -= transaction.amountDecimal;
-        } 
-
-        //Returnerar bankkontots totala saldo, efter alla iterationer (transaktioner) i Listan och beräkningen av de. 
-        return balanceDecimal; 
+        }
       }
+    
+      //Returnerar bankkontots totala saldo, efter alla iterationer (transaktioner) i Listan och beräkningen av de. 
+      return balanceDecimal; 
     }
 }
 
