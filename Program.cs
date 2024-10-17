@@ -9,5 +9,21 @@ class Program
 {
     static void Main(string[] args)
     {
+        //skapar ett object av FinanceManager-Classen för att hantera alla transaktioner. 
+        FinanceManager financeManager = new FinanceManager();
+
+        //skapar ett object av FileManager-Classen för att all data ska kunna skrivas till och läsas från fil. 
+        FileManager fileManager = new FileManager();
+
+        //börjar programmet med att ladda in (läsa in) data från filen (om det finns någon data i den). 
+        financeManager.transactionList = fileManager.LoadFromFileMethod();
+
+        //sista steg innan programmet avslutas, skriver (all data) till filen (senaste gällande datan). 
+        fileManager.SaveToFileMethod(financeManager.transactionList);
+
+        //skriver ut nuvarande saldo på bankkontot till användaren 
+        System.Console.WriteLine($"Ditt nuvarande saldo på bankkontot är: {financeManager.GetCurrentBalanceMethod()} kr. "); 
+
+        //Avslutar programmet 
     }
 }
