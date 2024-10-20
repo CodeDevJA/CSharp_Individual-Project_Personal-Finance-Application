@@ -18,6 +18,12 @@ class Program
         //börjar programmet med att ladda in (läsa in) data från filen (om det finns någon data i den). 
         financeManager.transactionList = fileManager.LoadFromFileMethod();
 
+        //lägger till en transaktion för inkomster här
+        financeManager.AddTransactionMethod(new IncomeTransaction("CSN-bidrag", 3000, DateTime.Now));
+
+        //lägger till en transaktion för kostnader här
+        financeManager.AddTransactionMethod(new ExpenseTransaction("Kollektivtrafik kort", 1800, DateTime.Now));
+
         //sista steg innan programmet avslutas, skriver (all data) till filen (senaste gällande datan). 
         fileManager.SaveToFileMethod(financeManager.transactionList);
 

@@ -9,7 +9,7 @@
 public class FileManager 
 {
   //sökvägen till filen där alla transaktioner sparas ner och laddas upp igen. 
-  private string filePathStr = "finance_data_accont_transactions-file";
+  private string filePathStr = "Classes\\Files\\FilesDB\\finance_data_accont_transactions-file.txt";
 
   //Metod() - som sparar alla transaktioner till en fil. 
   public void SaveToFileMethod(List<TransactionBase> transactionList) //ClassNamn parameterNamn

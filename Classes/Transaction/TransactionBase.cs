@@ -17,7 +17,8 @@ public abstract class TransactionBase
     //this.{attribut-namn} hänvisar till {attribut-namn} inom samma Class (dvs det dolda abstraherade attributet som tilldelas sitt värde genom shorthandPropertyn)
     this.descriptionStr = descriptionStr;     //Ger {attribut-namn} beskrivningen till det angivna värdet 
     this.amountDecimal = amountDecimal;       //Ger {attribut-namn} beloppet till det angivna värdet 
-    this.dateDateTime = dateDateTime;         //Ger {attribut-namn} datumet till det angivna värdet 
+    //felsök här
+    this.dateDateTime = dateTime;         //Ger {attribut-namn} datumet till det angivna värdet 
   } 
 
   //abstract Metod som ska ärvas och implementeras av Sub-Classer, för att specificera transaktionstypen, (tex "inkomst" eller "kostnad")
