@@ -1,3 +1,7 @@
+using System.Globalization; 
+// CultureInfo.CurrentCulture används för att få den aktuella kulturen (t.ex. sv-SE)
+// som styr formatering av datum, siffror, etc. baserat på systemets regionala inställningar. 
+
 //FinanceManager är en klass som hanterar alla transaktioner. Den kan lägga till och ta bort transaktioner samt beräkna aktuellt saldo på kontot.
 //Denna klass kommer att kunna generera/skapa ett object, som i sin tur kommer att innehålla en lista där alla transaktioner kommer att lagras.
 //genom Listan (i objectet, som genereras av denna Classen) kommer denna Class sedan att kunna behandla nyinkommen-input, men även befintlig data i Listan för att lägga till-, ta bort-, transaktioner och beräkna totalt saldo, med hjälp av inbyggda Metoder för respektive aktivitet. 
@@ -58,6 +62,7 @@ public class FinanceManager
       return balanceDecimal; 
     }
 
+    //Radera transaktioner manuellt
     //Metod för att visa alla transaktioner som finns i listan, så att användaren kan välja vilken transaktions som ska tas bort. 
     public void DisplayTransactionsMethod() //Loopar genom transaktionerna i listan och skriver ut varje transaktion med ett nummer så att användaren kan välja den för att radera. 
     {
@@ -81,6 +86,7 @@ public class FinanceManager
       }      
     }
 
+    //Radera transaktioner manuellt - forts. 
     //Metod för att radera en transaktion baserat på användarens val (väljer ett nummer från listan). 
     public void RemoveTransactionByIndexMethod(int index) //Tar emot ett index som användaren väljer och tar bort transaktionen från listan om indexet är giltigt. 
     {
@@ -98,6 +104,150 @@ public class FinanceManager
         //output: skriver ut till användaren att ett ogiltigt val har gjorts. 
         System.Console.WriteLine("Ogiltigt val. ");
       }
+    }
+
+    //Se statistik för inkomst och utgifter utgifter årsvis, månadsvis, dagvis och veckovis - (för år)
+    //Metod för att räkna ut den totala inkomsten och kostnad per år. 
+    public void DisplayYearlyStatsMethod(int year) 
+    {
+      //skapar 2 decimal variabler som startar på 0 (som senare ska återanvändas i beräkning av nya siffror), 
+      //för att räkna ut den totala inkomsten och kostnaden för ett år. 
+      decimal totalIncome = 0; //för inkomst. 
+      decimal totalExpense = 0; //för kostnad.  
+
+      //Loopar igenom listan för alla transaktions-object, och kontrollerar vilka som har datum som stämmer överens med villkoret (för datum inom ett specifikt år). 
+      foreach (TransactionBase transaction in transactionList) //(classNamn elementNamn in ListaNamn)
+      {
+        //skapar if-villkor som kontrollerar att datumet på transaktionerna har motsvarande datum för år, som inkommer som argument (int year). 
+        if (transaction.dateDateTime.Year == year) //villkor för transaktioner med rätt år i datumet, skapas nytt ytterligare if-villkor 
+        {
+          if (transaction.GetTransactionTypeStr() == TransactionType.INCOME.ToString()) //villkor för transaktioner med rätt transaktionstyp (inkomst), och kostnader hamnar i else-kodblocket
+          {
+            totalIncome += transaction.amountDecimal; //beräknar (total) inkomst för given period
+          }
+          else 
+          {
+            totalExpense += transaction.amountDecimal; //beräknar (total) kostnad för given period
+          }
+        }        
+      }
+
+      //output: Skriver ut årsstatistik 
+      System.Console.WriteLine($"Årsvis statistik för {year}: "); 
+      System.Console.WriteLine($"Totala inkomster: {totalIncome} kr"); 
+      System.Console.WriteLine($"Totala inkomster: {totalExpense} kr"); 
+      System.Console.WriteLine($"Netto: {totalIncome - totalExpense} kr"); 
+    }
+    
+    //Se statistik för inkomst och utgifter årsvis, månadsvis, dagvis och veckovis - forts. (för månader)   
+    //Metod för att räkna ut den totala inkomsten och kostnad per år och månad. 
+    public void DisplayMonthlyStatsMethod(int year, int month) 
+    {
+      //skapar 2 decimal variabler som startar på 0 (som senare ska återanvändas i beräkning av nya siffror), 
+      //för att räkna ut den totala inkomsten och kostnaden för ett år - månad. 
+      decimal totalIncome = 0; //för inkomst. 
+      decimal totalExpense = 0; //för kostnad.  
+
+      //Loopar igenom listan för alla transaktions-object, och kontrollerar vilka som har datum som stämmer överens med villkoret (för datum inom ett specifikt år och månad). 
+      foreach (TransactionBase transaction in transactionList) //(classNamn elementNamn in ListaNamn)
+      {
+        //skapar if-villkor som kontrollerar att datumet på transaktionerna har motsvarande datum för år och månad, som inkommer som argument (int year, int month). 
+        if (transaction.dateDateTime.Year == year && transaction.dateDateTime.Month == month) //villkor för transaktioner med rätt år och månad i datumet, skapas nytt ytterligare if-villkor 
+        {
+          if (transaction.GetTransactionTypeStr() == TransactionType.INCOME.ToString()) //villkor för transaktioner med rätt transaktionstyp (inkomst), och kostnader hamnar i else-kodblocket
+          {
+            totalIncome += transaction.amountDecimal; //beräknar (total) inkomst för given period
+          }
+          else 
+          {
+            totalExpense += transaction.amountDecimal; //beräknar (total) kostnad för given period
+          }
+        }        
+      }
+
+      //output: Skriver ut månadsstatistik 
+      System.Console.WriteLine($"Månadsvis statistik för {year}-{month}: "); 
+      System.Console.WriteLine($"Totala inkomster: {totalIncome} kr"); 
+      System.Console.WriteLine($"Totala inkomster: {totalExpense} kr"); 
+      System.Console.WriteLine($"Netto: {totalIncome - totalExpense} kr"); 
+    } 
+
+    //Se statistik för inkomst och utgifter årsvis, månadsvis, dagvis och veckovis - forts. (för dagar)   
+    //Metod för att räkna ut den totala inkomsten och kostnad per år, månad och dag. 
+    public void DisplayDailyStatsMethod(int year, int month, int day) 
+    {
+      //skapar 2 decimal variabler som startar på 0 (som senare ska återanvändas i beräkning av nya siffror), 
+      //för att räkna ut den totala inkomsten och kostnaden för ett år - månad - dag. 
+      decimal totalIncome = 0; //för inkomst. 
+      decimal totalExpense = 0; //för kostnad.  
+
+      //Loopar igenom listan för alla transaktions-object, och kontrollerar vilka som har datum som stämmer överens med villkoret (för datum inom ett specifikt år, månad och dag). 
+      foreach (TransactionBase transaction in transactionList) //(classNamn elementNamn in ListaNamn)
+      {
+        //skapar if-villkor som kontrollerar att datumet på transaktionerna har motsvarande datum för år, månad och dag, som inkommer som argument (int year, int month, int day). 
+        if (transaction.dateDateTime.Year == year && transaction.dateDateTime.Month == month && transaction.dateDateTime.Day == day) //villkor för transaktioner med rätt år, månad och dag i datumet, skapas nytt ytterligare if-villkor 
+        {
+          if (transaction.GetTransactionTypeStr() == TransactionType.INCOME.ToString()) //villkor för transaktioner med rätt transaktionstyp (inkomst), och kostnader hamnar i else-kodblocket
+          {
+            totalIncome += transaction.amountDecimal; //beräknar (total) inkomst för given period
+          }
+          else 
+          {
+            totalExpense += transaction.amountDecimal; //beräknar (total) kostnad för given period
+          }
+        }        
+      }
+
+      //output: Skriver ut dagsstatistik 
+      System.Console.WriteLine($"Dagvis statistik för {year}-{month}-{day}: "); 
+      System.Console.WriteLine($"Totala inkomster: {totalIncome} kr"); 
+      System.Console.WriteLine($"Totala inkomster: {totalExpense} kr"); 
+      System.Console.WriteLine($"Netto: {totalIncome - totalExpense} kr"); 
+    } 
+
+    //Se statistik för inkomst och utgifter årsvis, månadsvis, dagvis och veckovis - forts. (för veckor)
+    //Metod för att räkna ut den totala inkomsten och kostnad per år och vecka. 
+    public void DisplayWeeklyStatsMethod(int year, int week) 
+    {
+      //skapar 2 decimal variabler som startar på 0 (som senare ska återanvändas i beräkning av nya siffror), 
+      //för att räkna ut den totala inkomsten och kostnaden för ett år och en vecka. 
+      decimal totalIncome = 0; //för inkomst. 
+      decimal totalExpense = 0; //för kostnad.  
+
+      // Hämtar systemets aktuella kultur (t.ex. sv-SE) för datum/sifferformatering, för att kunna se statestik sorterat på veckor. 
+      var culture = System.Globalization.CultureInfo.CurrentCulture; 
+
+      //Loopar igenom listan för alla transaktions-object, och kontrollerar vilka som har datum som stämmer överens med villkoret (för datum inom ett specifikt år och vecka). 
+      foreach (TransactionBase transaction in transactionList) //(classNamn elementNamn in ListaNamn)
+      {
+        //omvandlar datum-formateringen i transaktions-objecten, till ett vecko-format, som lagras i en vecko-variabel, för att kunna använda denna variabeln i if-villkoret (vid filtrering på veckor). 
+        var transactionWeek = culture.Calendar.GetWeekOfYear(transaction.dateDateTime, System.Globalization.CalendarWeekRule.FirstDay, DayOfWeek.Monday); 
+          //Metoden .GetWeekOfYear(), tar 3 argument:
+            //Det datum vi vill undersöka (transaction.dateDateTime).
+            //Regeln för hur veckor numreras (System.Globalization.CalendarWeekRule.FirstDay).
+            //Vilken veckodag som räknas som den första dagen på veckan (DayOfWeek.Monday).
+
+        //skapar if-villkor som kontrollerar att datumet på transaktionerna har motsvarande datum för år och vecka, som inkommer som argument (int year, int week). 
+        if (transaction.dateDateTime.Year == year && transactionWeek == week) //villkor för transaktioner med rätt år och vecka i datumet, skapas nytt ytterligare if-villkor
+        {
+          if (transaction.GetTransactionTypeStr() == TransactionType.INCOME.ToString()) //villkor för transaktioner med rätt transaktionstyp (inkomst), och kostnader hamnar i else-kodblocket
+          {
+            //beräknar (total) inkomst för given period 
+            totalIncome += transaction.amountDecimal;
+          } 
+          else 
+          {
+            //beräknar (total) kostnad för given period 
+            totalExpense += transaction.amountDecimal;
+          }
+        }
+      }
+
+      //output: Skriver ut veckostatistik 
+      System.Console.WriteLine($"Veckovis statistik för år {year}, vecka {week}: "); 
+      System.Console.WriteLine($"Totala inkomster: {totalIncome} kr"); 
+      System.Console.WriteLine($"Totala kostnader: {totalExpense} kr"); 
+      System.Console.WriteLine($"Netto: {totalIncome - totalExpense} kr"); 
     }
 }
 

@@ -1,7 +1,18 @@
-﻿using System;                       //Ger tillgång till grundläggande funktioner som Console och DateTime, mm.
-using System.Collections.Generic;   //Ger tillgång till List och andra samlingsklasser. 
-using System.IO;                    //Ger tillgång till möjligheten att läsa från fil och skriva till fil.
-using System.Linq;                  //Ger tillgång till att kunna filtrera och söka i listor lättare, mm. 
+﻿using System; 
+//Ger tillgång till grundläggande funktioner som Console och DateTime, mm.
+
+using System.Collections.Generic; 
+//Ger tillgång till List och andra samlingsklasser. 
+
+using System.IO; 
+//Ger tillgång till möjligheten att läsa från fil och skriva till fil.
+
+using System.Linq; 
+//Ger tillgång till att kunna filtrera och söka i listor lättare, mm. 
+
+using System.Globalization; 
+// CultureInfo.CurrentCulture används för att få den aktuella kulturen (t.ex. sv-SE)
+// som styr formatering av datum, siffror, etc. baserat på systemets regionala inställningar. 
 
 namespace individuell_uppg;
 
