@@ -78,25 +78,25 @@ public class FinanceManager
 
         //ökar räknaren med +1, för varje iteration(element och ny rad)
         counter++; 
-      }
+      }      
+    }
 
-      //Metod för att radera en transaktion baserat på användarens val (väljer ett nummer från listan). 
-      public void RemoveTransactionByIndexMethod(int index) //Tar emot ett index som användaren väljer och tar bort transaktionen från listan om indexet är giltigt. 
+    //Metod för att radera en transaktion baserat på användarens val (väljer ett nummer från listan). 
+    public void RemoveTransactionByIndexMethod(int index) //Tar emot ett index som användaren väljer och tar bort transaktionen från listan om indexet är giltigt. 
+    {
+      //if-villkor som kontrollerar att index nummret finns i listan och är ett giltigt val. 
+      if (0 <= index && index < transactionList.Count) //första indexet startar på 0. 
       {
-        //if-villkor som kontrollerar att index nummret finns i listan och är ett giltigt val. 
-        if (0 <= index && index < transactionList.Count) //första indexet startar på 0. 
-        {
-          //tar bort transaktionen på en specifik index-position. 
-          transactionList.RemoveAt(index); 
+        //tar bort transaktionen på en specifik index-position. 
+        transactionList.RemoveAt(index); 
 
-          //output: skriver ut till användaren att den specifika transaktionen har raderats. 
-          System.Console.WriteLine("Transaktionen har raderats. ");
-        } 
-        else 
-        {
-          //output: skriver ut till användaren att ett ogiltigt val har gjorts. 
-          System.Console.WriteLine("Ogiltigt val. ");
-        }
+        //output: skriver ut till användaren att den specifika transaktionen har raderats. 
+        System.Console.WriteLine("Transaktionen har raderats. ");
+      } 
+      else 
+      {
+        //output: skriver ut till användaren att ett ogiltigt val har gjorts. 
+        System.Console.WriteLine("Ogiltigt val. ");
       }
     }
 }
