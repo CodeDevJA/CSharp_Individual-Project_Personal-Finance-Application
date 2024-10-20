@@ -1,6 +1,6 @@
 public enum TransactionType 
 {
-  INCOME, 
-  EXPENSE  
+  INCOME, //konstant för inkomst
+  EXPENSE //konstant för kostnad
 }
 
