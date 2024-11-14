@@ -1,0 +1,121 @@
+[
+  {
+    "Type": 1,
+    "Name": "CSN",
+    "Description": "Studiebidrag",
+    "Amount": 2800.0,
+    "Date": "2024-08-25T00:00:00"
+  },
+  {
+    "Type": 1,
+    "Name": "CSN",
+    "Description": "Studiebidrag",
+    "Amount": 2800.0,
+    "Date": "2024-09-25T00:00:00"
+  },
+  {
+    "Type": 1,
+    "Name": "CSN",
+    "Description": "Studiebidrag",
+    "Amount": 2800.0,
+    "Date": "2024-10-25T00:00:00"
+  },
+  {
+    "Type": 1,
+    "Name": "CSN",
+    "Description": "Studiebidrag",
+    "Amount": 2800.0,
+    "Date": "2024-11-25T00:00:00"
+  },
+  {
+    "Type": 1,
+    "Name": "CSN",
+    "Description": "Studiebidrag",
+    "Amount": 2800.0,
+    "Date": "2024-12-25T00:00:00"
+  },
+  {
+    "Type": 1,
+    "Name": "CSN",
+    "Description": "Studiebidrag",
+    "Amount": 2800.0,
+    "Date": "2025-01-25T00:00:00"
+  },
+  {
+    "Type": 1,
+    "Name": "CSN",
+    "Description": "Studiebidrag",
+    "Amount": 2800.0,
+    "Date": "2025-02-25T00:00:00"
+  },
+  {
+    "Type": 1,
+    "Name": "CSN",
+    "Description": "Studiebidrag",
+    "Amount": 2800.0,
+    "Date": "2025-03-25T00:00:00"
+  },
+  {
+    "Type": 2,
+    "Name": "Hyra",
+    "Description": "Boende kostnad",
+    "Amount": 8700.0,
+    "Date": "2024-08-28T00:00:00"
+  },
+  {
+    "Type": 2,
+    "Name": "Hyra",
+    "Description": "Boende kostnad",
+    "Amount": 8700.0,
+    "Date": "2024-09-29T00:00:00"
+  },
+  {
+    "Type": 2,
+    "Name": "Hyra",
+    "Description": "Boende kostnad",
+    "Amount": 8700.0,
+    "Date": "2024-10-30T00:00:00"
+  },
+  {
+    "Type": 2,
+    "Name": "Hyra",
+    "Description": "Boende kostnad",
+    "Amount": 8700.0,
+    "Date": "2024-11-27T00:00:00"
+  },
+  {
+    "Type": 2,
+    "Name": "Hyra",
+    "Description": "Boende kostnad",
+    "Amount": 8700.0,
+    "Date": "2024-12-26T00:00:00"
+  },
+  {
+    "Type": 2,
+    "Name": "Hyra",
+    "Description": "Boende kostnad",
+    "Amount": 8700.0,
+    "Date": "2025-01-25T00:00:00"
+  },
+  {
+    "Type": 2,
+    "Name": "Hyra",
+    "Description": "Boende kostnad",
+    "Amount": 8700.0,
+    "Date": "2025-02-24T00:00:00"
+  },
+  {
+    "Type": 1,
+    "Name": "Stipendium",
+    "Description": "Bidrag till studenter f\u0000r utbildningskostnader",
+    "Amount": 50000.0,
+    "Date": "2024-10-25T00:00:00"
+  },
+  {
+    "Type": 1,
+    "Name": "CSN",
+    "Description": "Studiebidrag",
+    "Amount": 2800.0,
+    "Date": "2024-03-25T00:00:00"
+  }
+]
